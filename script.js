@@ -164,19 +164,18 @@ function createTaskListItem(task) {
   checkbox.type = "checkbox";
   checkbox.checked = task.status === Status.Done;
   checkbox.addEventListener("change", () => {
-    if (checkbox.checked) {
+   if (checkbox.checked) {
       statusValue.classList.remove(task.status.toLowerCase());
       checkTask(task._id);
       descriptionElement.classList.add("strikethrough");
-      statusValue.textContent = task.status;
-      statusValue.classList.add(task.status.toLowerCase());
     } else if (!checkbox.checked) {
       statusValue.classList.remove(task.status.toLowerCase());
       uncheckTask(task._id);
       descriptionElement.classList.remove("strikethrough");
-      statusValue.textContent = task.status;
-      statusValue.classList.add(task.status.toLowerCase());
     }
+
+    statusValue.textContent = task.status;
+    statusValue.classList.add(task.status.toLowerCase());
   });
 
   const deleteButton = document.createElement("button");
