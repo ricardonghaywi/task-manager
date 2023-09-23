@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Manager</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <div class="header">
+    <h1 id="title">Welcome to Task Manager</h1>
+    <div class="actions">
+      <button id="allTasks-button">All Tasks</button>
+      <div id="filter-container" class="filter-container">
+        <button id="filter-button">Filter by Status &#9662;</button>
+        <div id="filter-dropdown" class="filter-dropdown">
+          <button class="filter-option" data-status="Done">Done</button>
+          <button class="filter-option" data-status="Pending">Pending</button>
+        </div>
+      </div>
+      <div id="order-container" class="order-container">
+        <button id="orderBy-button">Order by &#9662;</button>
+        <div id="order-dropdown" class="order-dropdown">
+          <button class="order-option" data-order="newest">Newest First</button>
+          <button class="order-option" data-order="oldest">Oldest First</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form id="task-form" class="margin-top">
+    <label for="Ttitle">Title:</label><br>
+    <input type="text" id="Ttitle" name="title"><br>
+    <label for="Tdescription">Description:</label><br>
+    <textarea type="text" rows="3" id="Tdescription" name="Tdescription"></textarea>
+    <br><br>
+    <input type="submit" value="Add Task">
+  </form>
+  <ul id="task-list"></ul>
+  <script src="./script.js"></script>
+</body>
+</html>
+
+
+
+
