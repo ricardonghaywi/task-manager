@@ -37,16 +37,13 @@ loadTasks();
 function searchByTitle(searchTerm) {
   let searchResult = [];
   for (const task of tasks) {
-    if (task.title === searchTerm) {
-      searchResult = [];
-      searchResult.push(task);
-      return searchResult;
-    } else if (task.title.includes(searchTerm)) {
+    if (task.title.includes(searchTerm)) {
       searchResult.push(task);
     }
   }
   return searchResult;
 }
+
 
 function uncheckTask(id) {
   for (const task of tasks) {
