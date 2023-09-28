@@ -34,6 +34,20 @@ function loadTasks() {
 
 loadTasks();
 
+function searchByTitle(searchTerm) {
+  let searchResult = [];
+  for (const task of tasks) {
+    if (task.title === searchTerm) {
+      searchResult = [];
+      searchResult.push(task);
+      return searchResult;
+    } else if (task.title.includes(searchTerm)) {
+      searchResult.push(task);
+    }
+  }
+  return searchResult;
+}
+
 function uncheckTask(id) {
   for (const task of tasks) {
     if (task._id === id && task.status === Status.Done) {
@@ -164,7 +178,7 @@ function createTaskListItem(task) {
   checkbox.type = "checkbox";
   checkbox.checked = task.status === Status.Done;
   checkbox.addEventListener("change", () => {
-   if (checkbox.checked) {
+    if (checkbox.checked) {
       statusValue.classList.remove(task.status.toLowerCase());
       checkTask(task._id);
       descriptionElement.classList.add("strikethrough");
@@ -219,6 +233,7 @@ document.getElementById("filter-button").addEventListener("click", function () {
     .querySelector(".filter-option[data-status='Pending']")
     .addEventListener("click", function () {
       const filteredTasks = filterByStatus(Status.Pending);
+      console.log(filteredTasks);
       renderTasks(filteredTasks);
     });
 });
@@ -252,5 +267,11 @@ document
   .addEventListener("click", function () {
     renderTasks(tasks);
   });
+  
+document.getElementById("search-button").addEventListener("click", function() {
+  const searchTerm = document.getElementById("search-term").value.trim();
+  renderTasks(searchByTitle(searchTerm));
+});
+
 
 renderTasks(tasks);
